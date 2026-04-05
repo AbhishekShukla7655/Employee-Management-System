@@ -1,10 +1,45 @@
 package com.abhi.model;
 
+import java.util.Date;
+
 public class Task {
     private int tid;
     private String title;
     private String description;
     private int assignedBy;
+    private Date assignedDate;
+    private String assignedToName;
+    public String getAssignedToName() {
+		return assignedToName;
+	}
+
+	public void setAssignedToName(String assignedToName) {
+		this.assignedToName = assignedToName;
+	}
+	private String assignedByName;
+
+    public String getAssignedByName() {
+        return assignedByName;
+    }
+
+    public void setAssignedByName(String assignedByName) {
+        this.assignedByName = assignedByName;
+    }
+    
+    public Date getAssignedDate() {
+		return assignedDate;
+	}
+	public void setAssignedDate(Date assignedDate) {
+		this.assignedDate = assignedDate;
+	}
+	public Date getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+	}
+	private Date dueDate;
+    
     public int getTid() {
 		return tid;
 	}

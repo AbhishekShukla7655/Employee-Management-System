@@ -1,0 +1,66 @@
+:root {
+  --bg-base: #050d1a;
+  --bg-card: #0d1e35;
+  --border: rgba(64, 140, 220, 0.18);
+  --accent: #3ab4f2;
+  --text-primary: #ddeeff;
+  --text-secondary: #7a9bbf;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 30px;
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #071220;
+  padding: 20px;
+}
+
+.nav-item {
+  display: block;
+  padding: 10px;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  background: rgba(58,180,242,0.1);
+  color: white;
+}
+
+/* Table */
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-table th, .task-table td {
+  padding: 10px;
+}
+
+.task-table th {
+  color: var(--text-secondary);
+}

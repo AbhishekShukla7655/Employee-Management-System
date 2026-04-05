@@ -10,14 +10,15 @@ import jakarta.servlet.http.*;
 @WebServlet("/updateTask")
 public class UpdateTaskServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        int tid = Integer.parseInt(req.getParameter("tid"));
+        int tid = Integer.parseInt(request.getParameter("tid"));
+        String status = request.getParameter("status");
 
         TaskDAO dao = new TaskDAO();
-        dao.updateTaskStatus(tid, "completed");
+        dao.updateTaskStatus(tid, status);
 
-        res.sendRedirect("viewTasks.jsp");
+        response.sendRedirect("employee.jsp");
     }
 }

@@ -5,7 +5,7 @@ User user = (User) session.getAttribute("user");
 
 // Session + Role check
 if(user == null || !"manager".equals(user.getRole())){
-    response.sendRedirect("login.jsp");
+    response.sendRedirect("index.jsp");
     return;
 }
 

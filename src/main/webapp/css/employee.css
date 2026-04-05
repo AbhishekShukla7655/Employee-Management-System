@@ -1,0 +1,41 @@
+/* Greeting */
+.greeting {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+/* Task Section */
+.task-section {
+  background: var(--bg-card);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+/* Status badges */
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+}
+
+.badge-progress {
+  background: orange;
+}
+
+.badge-notstarted {
+  background: red;
+}
+
+.badge-complete {
+  background: green;
+}
+
+/* Button */
+.btn-complete {
+  padding: 5px 10px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

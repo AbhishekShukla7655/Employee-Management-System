@@ -8,7 +8,7 @@ response.setDateHeader("Expires", 0);
 User user = (User) session.getAttribute("user");
 
 if(user == null || !"employee".equals(user.getRole())){
-    response.sendRedirect("login.jsp");
+    response.sendRedirect("index.jsp");
     return;
 }
 
