@@ -4,6 +4,7 @@ encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/addTask.jsp=UTF-8
 encoding//src/main/webapp/admin.jsp=UTF-8
 encoding//src/main/webapp/manager.jsp=UTF-8
+encoding//src/main/webapp/managerTasks.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
 encoding/<project>=UTF-8

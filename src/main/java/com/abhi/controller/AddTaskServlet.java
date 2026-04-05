@@ -1,6 +1,7 @@
 package com.abhi.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import com.abhi.dao.TaskDAO;
 import com.abhi.model.Task;
@@ -15,38 +16,48 @@ public class AddTaskServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws IOException {
 
-    	HttpSession session = req.getSession(false);
+        // ── Session & Role Check ──
+        HttpSession session = req.getSession(false);
+        if (session == null) { res.sendRedirect("index.jsp"); return; }
 
-    	if(session == null){
-    	    res.sendRedirect("login.jsp");
-    	    return;
-    	}
+        User user = (User) session.getAttribute("user");
+        if (user == null || !"manager".equals(user.getRole())) {
+            res.sendRedirect("index.jsp");
+            return;
+        }
 
-    	User user = (User) session.getAttribute("user");
-
-    	if(user == null){
-    	    res.sendRedirect("login.jsp");
-    	    return;
-    	}
-
-        String title = req.getParameter("title");
+        // ── Read Form Parameters ──
+        String title       = req.getParameter("title");
         String description = req.getParameter("description");
-        int assignedTo = Integer.parseInt(req.getParameter("assignedTo"));
+        int    assignedTo  = Integer.parseInt(req.getParameter("assignedTo"));
+        String dueDateStr  = req.getParameter("dueDate"); // "yyyy-MM-dd"
 
+        // ── Build Task ──
         Task task = new Task();
         task.setTitle(title);
         task.setDescription(description);
-        task.setAssignedBy(user.getEid()); // manager id
+        task.setAssignedBy(user.getEid());   // manager's ID
         task.setAssignedTo(assignedTo);
         task.setStatus("pending");
 
+        // Today's date as assigned_date
+        task.setAssignedDate(new Date(System.currentTimeMillis()));
+
+        // Due date from form (null-safe)
+        if (dueDateStr != null && !dueDateStr.isEmpty()) {
+            task.setDueDate(Date.valueOf(dueDateStr)); // parses "yyyy-MM-dd" directly
+        }
+
+        // ── Save to DB ──
         TaskDAO dao = new TaskDAO();
         boolean result = dao.addTask(task);
 
-        if(result){
-        	res.sendRedirect("manager.jsp");
+        if (result) {
+            session.setAttribute("successMsg", "Task assigned successfully! ✅");
+            res.sendRedirect("manager.jsp");
         } else {
-            res.getWriter().println("Failed ❌");
+            session.setAttribute("errorMsg", "Failed to assign task. Please try again. ❌");
+            res.sendRedirect("manager.jsp");
         }
     }
 }

@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
         boolean result = dao.registerUser(user);
 
         if (result) {
-        	res.sendRedirect("login.jsp");
+        	res.sendRedirect("index.jsp");
         } else {
             res.getWriter().println("Something went wrong ❌");
         }

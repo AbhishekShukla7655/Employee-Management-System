@@ -26,6 +26,7 @@ public class UserDAO {
 				user.setName(rs.getString("name"));
 				user.setEmail(rs.getString("email")); 
 				user.setRole(rs.getString("role"));
+				user.setPhotoPath(rs.getString("photo_path"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -118,6 +119,27 @@ public class UserDAO {
 
 	    return status;
 	}
+	
+	
+	public boolean updatePhotoPath(int eid, String photoPath) {
+        boolean status = false;
+        try {
+            Connection con = DBUtil.getConnection();
+ 
+            String sql = "UPDATE users SET photo_path = ? WHERE eid = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, photoPath);
+            ps.setInt(2, eid);
+ 
+            int rows = ps.executeUpdate();
+            if (rows > 0) status = true;
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
+	
 	public List<User> getAllEmployees() {
 
 	    List<User> list = new ArrayList<>();

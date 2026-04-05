@@ -6,6 +6,13 @@ public class User {
 	private String email;
 	private String password;
 	private String role;
+	private String photoPath;
+	public String getPhotoPath() {
+		return photoPath;
+	}
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
 	public int getEid() {
 		return eid;
 	}

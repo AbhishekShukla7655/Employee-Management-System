@@ -8,7 +8,7 @@ response.setDateHeader("Expires", 0);
 User user = (User) session.getAttribute("user");
 
 if(user == null || !"manager".equals(user.getRole())){
-    response.sendRedirect("login.jsp");
+    response.sendRedirect("index.jsp");
     return;
 }
 
@@ -33,7 +33,7 @@ for(Task t : tasks){
 <tr>
     <td><%= t.getTitle() %></td>
     <td><%= t.getDescription() %></td>
-    <td><%= t.getAssignedTo() %></td>
+	<td><%= t.getAssignedToName() %></td>
     <td><%= t.getStatus() %></td>
 </tr>
 

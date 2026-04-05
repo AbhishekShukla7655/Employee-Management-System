@@ -1,0 +1,25 @@
+# Compiled files
+*.class
+
+# Logs
+*.log
+
+# Maven
+/target/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+*.jar
+*.war
+
+# Uploads (agar use kar raha hai)
+uploads/photos/*
+!uploads/photos/.gitkeep
