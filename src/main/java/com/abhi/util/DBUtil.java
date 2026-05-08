@@ -7,14 +7,13 @@ import java.sql.SQLException;
 public class DBUtil {
 
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
-		
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		
-		String url = "jdbc:mysql://localhost:3306/EMS";		
-		String user="root";
-		String password="Abhishek@123";
-		
-		return DriverManager.getConnection(url,user,password);
-		
+
+		Class.forName("org.postgresql.Driver");
+		String url = System.getenv("DB_URL");
+		String user = System.getenv("DB_USERNAME");
+		String password = System.getenv("DB_PASSWORD");
+
+		return DriverManager.getConnection(url, user, password);
+
 	}
 }
